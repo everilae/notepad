@@ -1,3 +1,7 @@
+body {
+  overflow-y: scroll;
+}
+
 h1 {
   font-family: "Courier New";
 }
