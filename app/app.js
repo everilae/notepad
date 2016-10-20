@@ -11,7 +11,8 @@ angular.module('notePad', [
 config([
   '$locationProvider',
   '$routeProvider',
-  function($locationProvider, $routeProvider) {
+  '$localStorageProvider',
+  function($locationProvider, $routeProvider, $localStorageProvider) {
     $locationProvider.hashPrefix('!');
     $routeProvider.
       when('/main', {
@@ -25,5 +26,8 @@ config([
         template: '<note-editor></note-editor>'
       }).
       otherwise({redirectTo: '/main'});
+
+    if ($localStorageProvider.get('noteList') == null)
+      $localStorageProvider.set('noteList', []);
   }
 ]);

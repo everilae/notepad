@@ -11,8 +11,10 @@ describe('noteList', function() {
       ctrl = $componentController('noteList');
     }));
 
-    it('should create a `noteList` array property', function() {
-      expect(ctrl.noteList).toEqual([]);
-    });
+    it(`should use the existing \`$localStorage.noteList\``,
+      inject(function($localStorage) {
+        expect(ctrl.noteList).toEqual($localStorage.noteList);
+      })
+    );
 
 });

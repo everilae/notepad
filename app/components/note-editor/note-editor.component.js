@@ -16,18 +16,15 @@
   class NoteEditorController {
     constructor($scope, $location, $localStorage, $routeParams) {
       this.noteId = $routeParams.noteId;
-
-      if ($localStorage.noteList == null)
-        $localStorage.noteList = [];
-
+      // FIXME: the editor should know nothing about lists
       this.noteList = $localStorage.noteList;
 
-      if (this.noteId != null)
-        this.note = this.noteList[this.noteId];
-      else
+      if (this.noteId == null)
         this.note = createNote();
+      else
+        this.note = Object.assign({}, this.noteList[this.noteId]);
 
-      this.action = this.noteId != null ? 'Edit' : 'Add';
+      this.action = this.noteId == null ? 'Add' : 'Edit';
       this.$scope = $scope;
       this.$location = $location;
     }
@@ -35,7 +32,14 @@
     submit() {
       if (this.noteId == null)
         this.noteList.push(this.note);
+      else
+        this.noteList[this.noteId] = this.note;
+
       this.$scope.$evalAsync(() => this.$location.path('/main'));
+    }
+
+    static factory() {
+      return new NoteEditorController(...arguments);
     }
   }
 
@@ -48,7 +52,7 @@
         '$location',
         '$localStorage',
         '$routeParams',
-        NoteEditorController
+        NoteEditorController.factory
       ]
     });
 }());
