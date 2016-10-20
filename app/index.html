@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notePad" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>NotePad</title>
+  <meta name="description" content="A simple notepad">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" href="app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <link rel="stylesheet" href="app.animations.css">
+</head>
+<body>
+
+  <main class="container">
+
+  <div>
+    <a href="#!/add" class="btn btn-success pull-right">Add</a>
+    <h1><a href="#!/main">NotePad</a></h1>
+  </div>
+
+  <div class="view-container">
+    <div ng-view class="view-frame"></div>
+  </div>
+
+  </main>
+
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/ngstorage/ngStorage.js"></script>
+  <script src="app.js"></script>
+  <script src="components/note-list/note-list.module.js"></script>
+  <script src="components/note-list/note-list.component.js"></script>
+  <script src="components/note-editor/note-editor.module.js"></script>
+  <script src="components/note-editor/note-editor.component.js"></script>
+
+</body>
+</html>

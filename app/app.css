@@ -1,0 +1,25 @@
+h1 {
+  font-family: "Courier New";
+}
+
+.note-list {
+}
+
+.note-list-item {
+  border-width: 1px 0 0 0;
+  border-style: dashed;
+}
+
+.note-list-item:first-child,
+.note-list-item:last-child {
+  border-radius: 0;
+}
+
+.note-list-item:first-child {
+  border-width: 0;
+}
+
+.note-list .list-group-item-text {
+  white-space: pre;
+  font-family: "Courier New";
+}

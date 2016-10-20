@@ -1,0 +1,17 @@
+<form ng-submit="$ctrl.submit()">
+  <div class="form-group">
+    <input type="text" id="note-title" class="form-control"
+      placeholder="Title"
+      ng-model="$ctrl.note.title"
+      ng-required="true" />
+  </div>
+  <div class="form-group">
+    <textarea id="note-text" class="form-control"
+      placeholder="Dear NotePad..."
+      ng-model="$ctrl.note.text"
+      ng-required="true"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">{{$ctrl.action}}</button>
+  <!-- FIXME: should not hardcode back-link -->
+  <a href="#!/main" class="btn btn-default">Cancel</a>
+</form>

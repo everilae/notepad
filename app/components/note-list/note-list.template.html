@@ -1,0 +1,24 @@
+<p>Order:
+<select ng-model="$ctrl.orderBy">
+  <option value="title">Title</option>
+  <option value="-timestamp">Date &amp; Time</option>
+</select>
+</p>
+<ul class="list-group note-list">
+<li ng-repeat="note in $ctrl.noteList | orderBy: $ctrl.orderBy"
+    class="list-group-item note-list-item">
+  <ul class="list-inline pull-right">
+    <li><a aria-label="Edit" ng-href="#!/edit/{{$ctrl.noteList.indexOf(note)}}">
+      <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
+    </a></li>
+    <li><a aria-label="Remove" href="#" ng-click="$ctrl.remove(note)">
+      <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
+    </a></li>
+  </ul>
+  <h4 class="list-group-heading" ng-class="{'text-danger': $ctrl.isImportant(note)}">
+    {{note.title}}
+    <small><time datetime="{{note.timestamp}}">{{note.timestamp | date}}</time></small>
+  </h4>
+  <p class="list-group-item-text">{{note.text}}</p>
+</li>
+</ul>
