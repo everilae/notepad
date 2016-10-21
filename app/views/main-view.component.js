@@ -1,14 +1,6 @@
 (function() {
   'use strict';
 
-  function URL(strings, ...params) {
-    const result = [strings[0]];
-    params.forEach((p, i) => {
-      result.push(encodeURIComponent(p), strings[i + 1]);
-    });
-    return result.join('');
-  }
-
   angular.
     module('notePad.Views').
     component('mainView', {
@@ -20,7 +12,8 @@
       controller: [
         '$localStorage',
         '$location',
-        function($localStorage, $location) {
+        'utils',
+        function($localStorage, $location, utils) {
           this.noteList = $localStorage.noteList;
           this.remove = (note) => {
             if (confirm(`Remove "${note.title}"?`)) {
@@ -32,7 +25,7 @@
           };
           this.edit = (note) => {
             const noteId = this.noteList.indexOf(note);
-            $location.path(URL`/edit/${noteId}`);
+            $location.path(utils.URL`/edit/${noteId}`);
           };
         }
       ]

@@ -6,6 +6,7 @@ angular.module('notePad', [
   'ngAnimate',
   'ngStorage',
   'notePad.Views',
+  'Utils',
   'noteList',
   'noteEditor'
 ]).
