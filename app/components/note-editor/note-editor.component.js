@@ -33,7 +33,7 @@
     component('noteEditor', {
       bindings: {
         'note': '<',
-        'action': '@',
+        'action': '<',
         'onSubmit': '&',
         'onCancel': '&'
       },

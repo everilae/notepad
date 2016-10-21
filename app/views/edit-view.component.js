@@ -4,7 +4,7 @@ angular.
   module('notePad.Views').
   component('editView', {
     template: `<note-editor
-                 action="{{$ctrl.action}}"
+                 action="$ctrl.action"
                  note="$ctrl.note"
                  on-submit="$ctrl.save($note)"
                  on-cancel="$ctrl.cancel()" />`,
