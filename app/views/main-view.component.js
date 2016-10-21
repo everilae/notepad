@@ -7,7 +7,7 @@ angular.
                  order-by="-timestamp"
                  note-list="$ctrl.noteList"
                  on-remove="$ctrl.remove($note)"
-                 on-edit="$ctrl.edit($note)"></note-list>`,
+                 on-edit="$ctrl.edit($note)" />`,
     controller: [
       '$localStorage',
       '$location',
