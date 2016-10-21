@@ -5,6 +5,7 @@ angular.module('notePad', [
   'ngRoute',
   'ngAnimate',
   'ngStorage',
+  'notePad.Views',
   'noteList',
   'noteEditor'
 ]).
@@ -15,16 +16,9 @@ config([
   function($locationProvider, $routeProvider, $localStorageProvider) {
     $locationProvider.hashPrefix('!');
     $routeProvider.
-      when('/main', {
-        /* FIXME: Create proper views */
-        template: '<note-list></note-list>'
-      }).
-      when('/add', {
-        template: '<note-editor></note-editor>'
-      }).
-      when('/edit/:noteId', {
-        template: '<note-editor></note-editor>'
-      }).
+      when('/main', { template: '<main-view />' }).
+      when('/add', { template: '<edit-view />' }).
+      when('/edit/:noteId', { template: '<edit-view />' }).
       otherwise({redirectTo: '/main'});
 
     if ($localStorageProvider.get('noteList') == null)

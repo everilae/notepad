@@ -8,10 +8,10 @@
 <li ng-repeat="note in $ctrl.noteList | orderBy: $ctrl.orderBy"
     class="list-group-item note-list-item">
   <ul class="list-inline pull-right">
-    <li><a aria-label="Edit" ng-href="#!/edit/{{$ctrl.noteList.indexOf(note)}}">
+    <li><a aria-label="Edit" ng-click="$ctrl.onEdit({$note: note})">
       <span aria-hidden="true" class="glyphicon glyphicon-pencil"></span>
     </a></li>
-    <li><a aria-label="Remove" href="#" ng-click="$ctrl.remove(note)">
+    <li><a aria-label="Remove" ng-click="$ctrl.onRemove({$note: note})">
       <span aria-hidden="true" class="glyphicon glyphicon-remove"></span>
     </a></li>
   </ul>

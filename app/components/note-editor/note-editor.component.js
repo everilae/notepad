@@ -14,28 +14,13 @@
   }
 
   class NoteEditorController {
-    constructor($scope, $location, $localStorage, $routeParams) {
-      this.noteId = $routeParams.noteId;
-      // FIXME: the editor should know nothing about lists
-      this.noteList = $localStorage.noteList;
-
-      if (this.noteId == null)
+    $onInit() {
+      if (this.note == null)
         this.note = createNote();
       else
-        this.note = Object.assign({}, this.noteList[this.noteId]);
-
-      this.action = this.noteId == null ? 'Add' : 'Edit';
-      this.$scope = $scope;
-      this.$location = $location;
-    }
-
-    submit() {
-      if (this.noteId == null)
-        this.noteList.push(this.note);
-      else
-        this.noteList[this.noteId] = this.note;
-
-      this.$scope.$evalAsync(() => this.$location.path('/main'));
+        // Shallow copy, or else the 1-way binding is actually
+        // 2-way...
+        this.note = Object.assign({}, this.note);
     }
 
     static factory() {
@@ -46,13 +31,13 @@
   angular.
     module('noteEditor').
     component('noteEditor', {
+      bindings: {
+        'note': '<',
+        'action': '@',
+        'onSubmit': '&',
+        'onCancel': '&'
+      },
       templateUrl: 'components/note-editor/note-editor.template.html',
-      controller: [
-        '$scope',
-        '$location',
-        '$localStorage',
-        '$routeParams',
-        NoteEditorController.factory
-      ]
+      controller: NoteEditorController.factory
     });
 }());
